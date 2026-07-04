@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { site, waLink } from "@/config/site";
 import { heroMedia } from "@/config/content.config";
@@ -36,6 +37,16 @@ function GoogleBadge() {
 
 export default function HeroSection() {
   const reduce = useReducedMotion();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+
+  const toggleSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+    if (!v.muted) v.play().catch(() => {});
+  };
   const fade = (delay: number) => ({
     initial: reduce ? false : { opacity: 0, y: 24 },
     animate: { opacity: 1, y: 0 },
@@ -68,6 +79,7 @@ export default function HeroSection() {
               />
             ) : (
               <video
+                ref={videoRef}
                 autoPlay
                 muted
                 loop
@@ -82,6 +94,23 @@ export default function HeroSection() {
             )}
             {/* readability strip at the very bottom only — face stays clear */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink/80 to-transparent" />
+            {!reduce && (
+              <button
+                onClick={toggleSound}
+                aria-label={muted ? "Unmute video" : "Mute video"}
+                className="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-ink/60 text-ivory backdrop-blur-md transition-all hover:border-gold hover:text-gold"
+              >
+                {muted ? (
+                  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden>
+                    <path d="M16.5 12a4.5 4.5 0 0 0-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63Zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.8 8.8 0 0 0 21 12a9 9 0 0 0-7-8.77v2.06A7 7 0 0 1 19 12ZM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.26c-.67.52-1.42.93-2.25 1.18v2.06a9 9 0 0 0 3.69-1.81L19.73 21 21 19.73 4.27 3ZM12 4 9.91 6.09 12 8.18V4Z" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden>
+                    <path d="M3 9v6h4l5 5V4L7 9H3Zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.05A4.5 4.5 0 0 0 16.5 12ZM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06a9 9 0 0 0 0-17.54Z" />
+                  </svg>
+                )}
+              </button>
+            )}
             <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
               <p className="font-display text-lg italic text-ivory/95">Live on stage — real event footage</p>
               <span className="rounded-full border border-gold/40 bg-ink/60 px-3 py-1 text-[10px] uppercase tracking-widest2 text-gold backdrop-blur-md">
