@@ -153,3 +153,48 @@ body {
     animation: none;
   }
 }
+
+/* Cinematic hero: slow Ken Burns zoom + crossfade between two stills */
+.hero-kenburns {
+  animation: kenburns 22s ease-in-out infinite alternate;
+}
+.hero-kenburns-alt {
+  animation:
+    kenburns 22s ease-in-out infinite alternate-reverse,
+    herofade 22s ease-in-out infinite;
+  opacity: 0;
+}
+@keyframes kenburns {
+  from {
+    transform: scale(1) translateY(0);
+  }
+  to {
+    transform: scale(1.09) translateY(-1.5%);
+  }
+}
+@keyframes herofade {
+  0%,
+  38% {
+    opacity: 0;
+  }
+  55%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.hero-vignette {
+  background: radial-gradient(
+    ellipse 120% 90% at 50% 50%,
+    transparent 55%,
+    rgba(5, 5, 8, 0.35) 100%
+  );
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-kenburns,
+  .hero-kenburns-alt {
+    animation: none;
+  }
+}

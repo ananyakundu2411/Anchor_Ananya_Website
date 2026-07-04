@@ -86,10 +86,15 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
-            <li className="mt-2 px-3 pb-2">
+            <li className="mt-2 px-3 pb-1">
               <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp w-full">
                 Book Ananya on WhatsApp
               </a>
+            </li>
+            <li className="flex items-center justify-center gap-6 px-3 pb-3 pt-2 text-xs uppercase tracking-widest2 text-ivory-dim/80">
+              <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-gold">Instagram</a>
+              <a href={site.social.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-gold">YouTube</a>
+              <a href={site.social.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-gold">Facebook</a>
             </li>
           </ul>
         </div>

@@ -121,6 +121,19 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Pull quote */}
+      <section className="relative overflow-hidden border-t border-ink-line py-20">
+        <div className="spotlight-top absolute inset-x-0 top-0 h-full" aria-hidden />
+        <Reveal className="container-site relative text-center">
+          <span className="font-display text-7xl leading-none text-gold/20" aria-hidden>&ldquo;</span>
+          <blockquote className="mx-auto -mt-6 max-w-2xl text-balance font-display text-3xl italic leading-snug text-ivory sm:text-4xl">
+            An event is never just a schedule — it&rsquo;s a story waiting to be
+            <span className="gold-text not-italic"> told well.</span>
+          </blockquote>
+          <p className="mt-6 text-xs uppercase tracking-widest2 text-ivory-dim/70">— Ananya Kundu</p>
+        </Reveal>
+      </section>
+
       {/* Journey */}
       <section className="relative border-t border-ink-line py-24">
         <div className="spotlight-top absolute inset-x-0 top-0 h-64" aria-hidden />

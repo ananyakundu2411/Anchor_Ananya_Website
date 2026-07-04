@@ -59,7 +59,13 @@ export default function TestimonialsSection({ full = false }: { full?: boolean }
                 exit={reduce ? undefined : { opacity: 0, y: -16 }}
                 transition={{ duration: 0.5 }}
               >
-                <Stars n={t.rating} />
+                <div className="flex items-center gap-3">
+                  <Stars n={t.rating} />
+                  <span className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] uppercase tracking-widest2 text-ivory-dim/80">
+                    <span className="flex h-4 w-4 items-center justify-center rounded-full bg-white/90 text-[9px] font-semibold text-[#4285F4]">G</span>
+                    5-Star Client
+                  </span>
+                </div>
                 <p className="mt-5 font-display text-xl leading-relaxed text-ivory sm:text-2xl">
                   {t.text}
                 </p>

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { site, waLink } from "@/config/site";
 
@@ -34,45 +33,30 @@ function GoogleBadge() {
 
 export default function HeroSection() {
   const reduce = useReducedMotion();
-  const [showVideo, setShowVideo] = useState(false);
-
-  // Load the background video only on larger screens — mobile gets the
-  // instant poster image (saves ~6MB on phones).
-  useEffect(() => {
-    if (reduce) return;
-    const mq = window.matchMedia("(min-width: 1024px)");
-    const update = () => setShowVideo(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, [reduce]);
 
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden">
-      {/* Cinematic background */}
+      {/* Cinematic Ken Burns background — two premium stage shots crossfading */}
       <div className="absolute inset-0" aria-hidden>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/media/hero/hero-poster.jpg"
+          src="/media/hero/hero-stage.jpg"
           alt=""
           fetchPriority="high"
-          className="h-full w-full object-cover"
+          className={`h-full w-full object-cover object-[68%_12%] ${reduce ? "" : "hero-kenburns"}`}
         />
-        {showVideo && (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster="/media/hero/hero-poster.jpg"
-            className="absolute inset-0 h-full w-full object-cover"
-          >
-            <source src="/media/hero/hero.mp4" type="video/mp4" />
-          </video>
+        {!reduce && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src="/media/hero/hero-lights.jpg"
+            alt=""
+            loading="lazy"
+            className="hero-kenburns-alt absolute inset-0 h-full w-full object-cover"
+          />
         )}
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/70 to-ink/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/95 from-5% via-ink/60 via-40% to-ink/10 to-75%" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink from-2% via-transparent via-35% to-ink/45" />
+        <div className="hero-vignette absolute inset-0" />
         <div className="spotlight-top absolute inset-x-0 top-0 h-72" />
       </div>
 
