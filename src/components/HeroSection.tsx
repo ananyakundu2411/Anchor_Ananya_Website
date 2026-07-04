@@ -54,16 +54,16 @@ export default function HeroSection() {
         <div className="spotlight-top absolute inset-x-0 top-0 h-96" />
       </div>
 
-      <div className="container-site relative grid min-h-[100svh] items-center gap-10 pb-28 pt-28 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:pb-20 lg:pt-32">
+      <div className="container-site relative grid items-center gap-8 pb-24 pt-24 lg:min-h-[100svh] lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:pb-20 lg:pt-32">
         {/* Portrait — first on mobile so Ananya leads the page, fully visible */}
-        <motion.div {...fade(0.15)} className="relative order-1 mx-auto w-full max-w-sm lg:order-2 lg:max-w-none">
-          <div className="relative overflow-hidden rounded-3xl border border-gold/25 shadow-glow">
+        <motion.div {...fade(0.3)} className="relative order-2 mx-auto w-full max-w-xs sm:max-w-sm lg:order-2 lg:max-w-none">
+          <div className="img-grade relative overflow-hidden rounded-3xl border border-gold/25 shadow-glow">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={heroMedia.portrait}
               alt={heroMedia.portraitAlt}
               fetchPriority="high"
-              className="aspect-[4/5] w-full object-cover object-top lg:aspect-[3/4]"
+              className="aspect-[4/5] max-h-[52svh] w-full object-cover object-top lg:aspect-[3/4] lg:max-h-none"
             />
             {/* readability strip at the very bottom only — face stays clear */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink/80 to-transparent" />
@@ -81,14 +81,14 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Copy column */}
-        <div className="order-2 lg:order-1">
+        <div className="order-1 lg:order-1">
           <motion.p {...fade(0.05)} className="eyebrow">
             Anchor Ananya Kundu · {site.location.split("/")[0].trim()}
           </motion.p>
 
           <motion.h1
             {...fade(0.2)}
-            className="mt-4 text-balance font-display text-4xl font-semibold leading-[1.08] text-ivory sm:text-5xl lg:text-6xl"
+            className="mt-4 text-balance font-display text-[2rem] font-semibold leading-[1.1] text-ivory sm:text-5xl lg:text-6xl"
           >
             Premium Anchor &amp; Emcee for{" "}
             <span className="gold-text-animated">Weddings, College Fests, Brand

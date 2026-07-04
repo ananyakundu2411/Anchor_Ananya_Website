@@ -9,7 +9,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import InstagramSection from "@/components/InstagramSection";
 import FinalCTA from "@/components/FinalCTA";
 import FeaturedEvents from "@/components/FeaturedEvents";
-import CollegeSection from "@/components/CollegeSection";
+import CelebrationsSpotlight from "@/components/CelebrationsSpotlight";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -45,7 +45,7 @@ export default function HomePage() {
 
       <FeaturedEvents />
 
-      <CollegeSection />
+      <CelebrationsSpotlight />
 
       <InstagramSection />
 

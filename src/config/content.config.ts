@@ -14,12 +14,15 @@ export const heroMedia = {
 
 /** Homepage Featured Events — exactly one strong item per category. */
 export const featuredEvents = [
-  { src: "/media/weddings/wedding-arch-1.jpg", category: "weddings", caption: "Wedding Ceremony Hosting", waKey: "wedding" },
-  { src: "/media/college/college-annualday-1.jpg", category: "college", caption: "Annual Day Hosting", waKey: "college" },
-  { src: "/media/corporate/corporate-lawn-1.jpg", category: "corporate", caption: "Corporate Gala Evening", waKey: "corporate" },
-  { src: "/media/brand/brand-vivo-launch.jpg", category: "brand", caption: "vivo X200 FE Brand Launch", waKey: "brand" },
-  { src: "/media/cultural/cultural-saree.jpg", category: "cultural", caption: "Cultural Festival Stage", waKey: "cultural" },
-  { src: "/media/private/private-birthday-2.jpg", category: "private", caption: "Private Celebration", waKey: "private" },
+  { src: "/media/weddings/wedding-arch-1.jpg", category: "weddings", label: "Weddings", caption: "Wedding Ceremony Hosting", waKey: "wedding" },
+  { src: "/media/weddings/sangeet-lights.jpg", category: "weddings", label: "Sangeet Nights", caption: "Sangeet Under the Lights", waKey: "sangeet" },
+  { src: "/media/weddings/haldi-yellow.jpg", category: "weddings", label: "Haldi", caption: "Haldi Morning Rituals", waKey: "haldi" },
+  { src: "/media/corporate/corporate-lawn-1.jpg", category: "corporate", label: "Corporate", caption: "Corporate Gala Evening", waKey: "corporate" },
+  { src: "/media/brand/brand-vivo-launch.jpg", category: "brand", label: "Brand Launches", caption: "vivo X200 FE Brand Launch", waKey: "brand" },
+  { src: "/media/private/private-birthday-2.jpg", category: "private", label: "Private Celebrations", caption: "Milestone Birthday Hosting", waKey: "private" },
+  { src: "/media/cultural/cultural-saree.jpg", category: "cultural", label: "Cultural Shows", caption: "Cultural Festival Stage", waKey: "cultural" },
+  { src: "/media/weddings/engagement-1.jpg", category: "weddings", label: "Engagements", caption: "Ring Ceremony Evening", waKey: "engagement" },
+  { src: "/media/private/newyear-2.jpg", category: "private", label: "New Year Galas", caption: "New Year Countdown Night", waKey: "newyear" },
 ] as const;
 
 /** College & Campus Events homepage section. */
