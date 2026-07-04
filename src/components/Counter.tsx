@@ -3,6 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView, useReducedMotion } from "framer-motion";
 
+/**
+ * SEO-safe counter: server HTML contains the REAL final number.
+ * On view (JS available, motion allowed) it animates 0 -> value once.
+ */
 export default function Counter({
   value,
   suffix = "",
@@ -15,14 +19,10 @@ export default function Counter({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const reduce = useReducedMotion();
-  const [n, setN] = useState(0);
+  const [n, setN] = useState(value); // SSR + no-JS show the real number
 
   useEffect(() => {
-    if (!inView) return;
-    if (reduce) {
-      setN(value);
-      return;
-    }
+    if (!inView || reduce) return;
     let raf: number;
     const start = performance.now();
     const tick = (t: number) => {

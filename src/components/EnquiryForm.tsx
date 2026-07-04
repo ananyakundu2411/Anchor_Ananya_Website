@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { site, waLink } from "@/config/site";
+import { track } from "@/lib/track";
 
 const EVENT_TYPES = [
   "Wedding / Sangeet / Engagement",
@@ -63,6 +64,24 @@ export default function EnquiryForm() {
       message: String(data.get("message") || ""),
     };
 
+    track("form_submit", { eventType: payload.eventType });
+
+    // Preferred path: server-side lead capture (DB + email) — falls through on failure
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...payload, source: "website_form" }),
+      });
+      const j = await res.json().catch(() => null);
+      if (res.ok && j?.ok) {
+        setStatus("success");
+        form.reset();
+        return;
+      }
+    } catch { /* fall through to client-side channels */ }
+
     if (!ENDPOINT) {
       // Fallback: hand the enquiry to WhatsApp so nothing is lost.
       const msg = [
@@ -79,12 +98,12 @@ export default function EnquiryForm() {
         .filter(Boolean)
         .join("\n");
       window.open(waLink(msg), "_blank", "noopener,noreferrer");
+      track("whatsapp_click", { source: "form_fallback" });
       setStatus("success");
       form.reset();
       return;
     }
 
-    setStatus("loading");
     try {
       const res = await fetch(ENDPOINT, {
         method: "POST",

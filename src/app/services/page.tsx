@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import FinalCTA from "@/components/FinalCTA";
 import { services } from "@/config/services";
-import { waLink } from "@/config/site";
+import { waCategoryLink, waMessages } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Services — Wedding, Corporate & Event Anchoring",
@@ -55,7 +55,7 @@ export default function ServicesPage() {
                   </h2>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-ivory-dim">{s.copy}</p>
                   <a
-                    href={waLink(`Hi Ananya, I would like to enquire about ${s.title.toLowerCase()} for my event.`)}
+                    href={waCategoryLink((s.waKey || "default") as keyof typeof waMessages)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-5 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest2 text-gold transition-all hover:gap-3"

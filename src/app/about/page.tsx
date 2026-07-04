@@ -100,10 +100,10 @@ export default function AboutPage() {
       <section className="border-t border-ink-line py-24">
         <div className="container-site">
           <SectionHeading
-            eyebrow="Why Clients Choose Her"
+            eyebrow="Why Clients Trust Ananya"
             title={
               <>
-                More Than a Host — <span className="gold-text">A Safe Pair of Hands</span>
+                Proof, Not Promises — <span className="gold-text">A Safe Pair of Hands</span>
               </>
             }
           />

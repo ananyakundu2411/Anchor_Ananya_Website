@@ -13,6 +13,8 @@ export type GalleryItem = {
   category: GalleryCategory;
   caption: string;
   alt: string;
+  location?: string;
+  context?: string;
   /** portrait | landscape — helps masonry rhythm */
   orientation?: "portrait" | "landscape";
 };
@@ -29,8 +31,8 @@ export const categories: { key: GalleryCategory | "all"; label: string }[] = [
 
 export const galleryItems: GalleryItem[] = [
   // ——— Weddings / Sangeet / Haldi / Mehndi / Engagement ———
-  { type: "image", src: "/media/weddings/wedding-arch-1.jpg", category: "weddings", caption: "Wedding Ceremony", alt: "Anchor Ananya Kundu hosting a wedding beside a pastel floral arch", orientation: "portrait" },
-  { type: "image", src: "/media/weddings/sangeet-lights.jpg", category: "weddings", caption: "Sangeet Night", alt: "Anchor Ananya Kundu under a canopy of fairy lights at a sangeet", orientation: "portrait" },
+  { type: "image", src: "/media/weddings/wedding-arch-1.jpg", category: "weddings", location: "Mumbai", context: "Ceremony flow, family entries and ritual narration", caption: "Wedding Ceremony", alt: "Anchor Ananya Kundu hosting a wedding beside a pastel floral arch", orientation: "portrait" },
+  { type: "image", src: "/media/weddings/sangeet-lights.jpg", category: "weddings", location: "Mumbai", context: "Family performances, couple games and choreographed reveals", caption: "Sangeet Night", alt: "Anchor Ananya Kundu under a canopy of fairy lights at a sangeet", orientation: "portrait" },
   { type: "video", src: "/media/videos/wedding-reel.mp4", poster: "/media/videos/wedding-reel-poster.jpg", category: "weddings", caption: "Wedding Highlights", alt: "Wedding hosting highlight reel of Anchor Ananya Kundu", orientation: "portrait" },
   { type: "image", src: "/media/weddings/haldi-yellow.jpg", category: "weddings", caption: "Haldi Morning", alt: "Anchor Ananya Kundu in yellow hosting a haldi ceremony", orientation: "portrait" },
   { type: "image", src: "/media/weddings/wedding-floral.jpg", category: "weddings", caption: "Reception Evening", alt: "Anchor Ananya Kundu at a floral wedding reception stage", orientation: "portrait" },
@@ -52,18 +54,18 @@ export const galleryItems: GalleryItem[] = [
   { type: "image", src: "/media/weddings/haldi-floral.jpg", category: "weddings", caption: "Haldi Celebrations", alt: "Anchor Ananya Kundu at a floral haldi celebration", orientation: "portrait" },
 
   // ——— Corporate ———
-  { type: "image", src: "/media/corporate/corporate-lawn-1.jpg", category: "corporate", caption: "Corporate Gala", alt: "Anchor Ananya Kundu in formal black hosting a corporate lawn event", orientation: "portrait" },
+  { type: "image", src: "/media/corporate/corporate-lawn-1.jpg", category: "corporate", caption: "Corporate Gala Evening", alt: "Anchor Ananya Kundu in formal black hosting a corporate lawn event", orientation: "portrait" },
   { type: "video", src: "/media/videos/corporate-reel.mp4", poster: "/media/videos/corporate-reel-poster.jpg", category: "corporate", caption: "Corporate Highlights", alt: "Corporate event hosting reel of Anchor Ananya Kundu", orientation: "portrait" },
   { type: "image", src: "/media/corporate/corporate-flowerwall-1.jpg", category: "corporate", caption: "Annual Celebration", alt: "Anchor Ananya Kundu at a flower-wall corporate stage", orientation: "portrait" },
   { type: "image", src: "/media/corporate/corporate-lawn-2.jpg", category: "corporate", caption: "Audience Engagement", alt: "Anchor Ananya Kundu engaging a corporate audience", orientation: "landscape" },
-  { type: "image", src: "/media/corporate/corporate-familyday.jpg", category: "corporate", caption: "Family Day", alt: "Anchor Ananya Kundu hosting a corporate family day", orientation: "portrait" },
+  { type: "image", src: "/media/corporate/corporate-familyday.jpg", category: "corporate", caption: "Corporate Family Day", alt: "Anchor Ananya Kundu hosting a corporate family day", orientation: "portrait" },
   { type: "image", src: "/media/corporate/corporate-award.jpg", category: "corporate", caption: "Award Night", alt: "Anchor Ananya Kundu honoured at an award ceremony", orientation: "portrait" },
   { type: "image", src: "/media/corporate/corporate-lawn-3.jpg", category: "corporate", caption: "Evening Programme", alt: "Anchor Ananya Kundu presenting at an outdoor corporate evening", orientation: "landscape" },
   { type: "image", src: "/media/corporate/corporate-mic.jpg", category: "corporate", caption: "On the Mic", alt: "Anchor Ananya Kundu speaking at a corporate event", orientation: "landscape" },
   { type: "image", src: "/media/corporate/corporate-flowerwall-2.jpg", category: "corporate", caption: "Grand Opening", alt: "Anchor Ananya Kundu at a decorated corporate opening", orientation: "portrait" },
 
   // ——— Cultural ———
-  { type: "image", src: "/media/cultural/cultural-saree.jpg", category: "cultural", caption: "Festive Programme", alt: "Anchor Ananya Kundu in a saree hosting a cultural festival", orientation: "portrait" },
+  { type: "image", src: "/media/cultural/cultural-saree.jpg", category: "cultural", caption: "Festival Stage Hosting", alt: "Anchor Ananya Kundu in a saree hosting a cultural festival", orientation: "portrait" },
   { type: "video", src: "/media/videos/cultural-reel.mp4", poster: "/media/videos/cultural-reel-poster.jpg", category: "cultural", caption: "Cultural Highlights", alt: "Cultural show hosting reel of Anchor Ananya Kundu", orientation: "portrait" },
   { type: "image", src: "/media/cultural/cultural-podium.jpg", category: "cultural", caption: "Community Festival", alt: "Anchor Ananya Kundu at a community festival podium", orientation: "portrait" },
   { type: "image", src: "/media/cultural/cultural-stage.jpg", category: "cultural", caption: "Cultural Evening", alt: "Anchor Ananya Kundu hosting a cultural evening on stage", orientation: "portrait" },
@@ -71,18 +73,18 @@ export const galleryItems: GalleryItem[] = [
   { type: "image", src: "/media/cultural/cultural-fest.jpg", category: "cultural", caption: "Festival Night", alt: "Anchor Ananya Kundu hosting a festival night programme", orientation: "portrait" },
 
   // ——— College ———
-  { type: "image", src: "/media/college/college-annualday-1.jpg", category: "college", caption: "Annual Day", alt: "Anchor Ananya Kundu hosting an annual day on an outdoor stage", orientation: "portrait" },
-  { type: "video", src: "/media/videos/college-reel.mp4", poster: "/media/videos/college-reel-poster.jpg", category: "college", caption: "Annual Day Highlights", alt: "Annual day hosting reel of Anchor Ananya Kundu", orientation: "portrait" },
-  { type: "image", src: "/media/college/college-annualday-2.jpg", category: "college", caption: "Campus Celebration", alt: "Anchor Ananya Kundu engaging students at an annual day", orientation: "portrait" },
-  { type: "image", src: "/media/college/college-annualday-3.jpg", category: "college", caption: "Prize Distribution", alt: "Anchor Ananya Kundu hosting a prize distribution ceremony", orientation: "portrait" },
+  { type: "image", src: "/media/college/college-annualday-1.jpg", category: "college", location: "Navi Mumbai", context: "School annual day — full-day stage management", caption: "Annual Day Hosting", alt: "Anchor Ananya Kundu hosting an annual day on an outdoor stage", orientation: "portrait" },
+  { type: "video", src: "/media/videos/college-reel.mp4", poster: "/media/videos/college-reel-poster.jpg", category: "college", caption: "Annual Day Highlights Reel", alt: "Annual day hosting reel of Anchor Ananya Kundu", orientation: "portrait" },
+  { type: "image", src: "/media/college/college-annualday-2.jpg", category: "college", caption: "Campus Crowd Engagement", alt: "Anchor Ananya Kundu engaging students at an annual day", orientation: "portrait" },
+  { type: "image", src: "/media/college/college-annualday-3.jpg", category: "college", caption: "Prize Distribution Ceremony", alt: "Anchor Ananya Kundu hosting a prize distribution ceremony", orientation: "portrait" },
 
   // ——— Brand ———
-  { type: "image", src: "/media/brand/brand-vivo-launch.jpg", category: "brand", caption: "vivo X200 FE Launch", alt: "Anchor Ananya Kundu hosting the vivo X200 FE launch", orientation: "portrait" },
+  { type: "image", src: "/media/brand/brand-vivo-launch.jpg", category: "brand", location: "Navi Mumbai", context: "Product reveal hosting for vivo retail launch", caption: "vivo X200 FE Brand Launch", alt: "Anchor Ananya Kundu hosting the vivo X200 FE launch", orientation: "portrait" },
   { type: "video", src: "/media/videos/brand-reel.mp4", poster: "/media/videos/brand-reel-poster.jpg", category: "brand", caption: "Brand Launch Highlights", alt: "Brand launch hosting reel of Anchor Ananya Kundu", orientation: "portrait" },
 
   // ——— Private ———
-  { type: "image", src: "/media/private/private-birthday-2.jpg", category: "private", caption: "Birthday Celebration", alt: "Anchor Ananya Kundu hosting a birthday celebration", orientation: "portrait" },
-  { type: "image", src: "/media/private/babyshower-pink.jpg", category: "private", caption: "Baby Shower", alt: "Anchor Ananya Kundu hosting an elegant baby shower", orientation: "portrait" },
+  { type: "image", src: "/media/private/private-birthday-2.jpg", category: "private", caption: "Milestone Birthday Hosting", alt: "Anchor Ananya Kundu hosting a birthday celebration", orientation: "portrait" },
+  { type: "image", src: "/media/private/babyshower-pink.jpg", category: "private", location: "Airoli", context: "Traditional games with a premium hotel setting", caption: "Godh Bharai Ceremony", alt: "Anchor Ananya Kundu hosting an elegant baby shower", orientation: "portrait" },
   { type: "image", src: "/media/private/private-crowd-1.jpg", category: "private", caption: "Full-House Energy", alt: "Anchor Ananya Kundu raising energy at a private party", orientation: "landscape" },
   { type: "image", src: "/media/private/private-couple-stage.jpg", category: "private", caption: "Anniversary Evening", alt: "Anchor Ananya Kundu hosting an anniversary celebration", orientation: "portrait" },
   { type: "image", src: "/media/private/naming-ceremony.jpg", category: "private", caption: "Naming Ceremony", alt: "Anchor Ananya Kundu hosting a naming ceremony", orientation: "portrait" },

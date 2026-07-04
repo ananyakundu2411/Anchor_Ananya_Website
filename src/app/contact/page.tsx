@@ -51,8 +51,15 @@ export default function ContactPage() {
                 Your Date Is Waiting — <span className="gold-text">Let&rsquo;s Lock It In</span>
               </>
             }
-            sub="Share your event details and get a response within hours. Peak wedding and festive dates go fast."
+            sub="WhatsApp is the fastest path — share date, city and event type for a quick quote. Peak wedding and festive dates go fast."
           />
+          <Reveal className="mt-8 flex flex-wrap justify-center gap-3">
+            {["Response within hours", "Available across India", "Share date · city · event type for a quick quote"].map((t) => (
+              <span key={t} className="rounded-full border border-gold/30 bg-gold/5 px-4 py-1.5 text-xs tracking-wide text-ivory-dim">
+                {t}
+              </span>
+            ))}
+          </Reveal>
         </div>
       </section>
 

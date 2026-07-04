@@ -3,6 +3,17 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { categories, galleryItems, type GalleryCategory, type GalleryItem } from "@/config/gallery";
+import { waCategoryLink, waMessages } from "@/config/site";
+import { track } from "@/lib/track";
+
+const CAT_TO_WA: Record<string, keyof typeof waMessages> = {
+  weddings: "wedding",
+  corporate: "corporate",
+  cultural: "cultural",
+  college: "college",
+  brand: "brand",
+  private: "private",
+};
 
 function Lightbox({
   items,
@@ -82,12 +93,30 @@ function Lightbox({
             className="max-h-[80vh] w-auto rounded-xl shadow-card"
           />
         )}
-        <p className="mt-4 text-center font-display text-lg text-ivory">
-          {item.caption}
-          <span className="ml-3 text-sm font-sans text-ivory-dim/70">
-            {index + 1} / {items.length}
-          </span>
-        </p>
+        <div className="mt-4 flex flex-col items-center gap-2 text-center">
+          <p className="font-display text-lg text-ivory">
+            {item.caption}
+            <span className="ml-3 text-sm font-sans text-ivory-dim/70">
+              {index + 1} / {items.length}
+            </span>
+          </p>
+          <p className="text-[11px] uppercase tracking-widest2 text-gold">
+            {item.category}
+            {item.location ? ` · ${item.location}` : ""}
+          </p>
+          {item.context && (
+            <p className="max-w-md text-xs leading-relaxed text-ivory-dim/80">{item.context}</p>
+          )}
+          <a
+            href={waCategoryLink(CAT_TO_WA[item.category] || "default")}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => track("gallery_cta", { source: "lightbox", category: item.category })}
+            className="btn-whatsapp mt-1 !px-5 !py-2.5 text-xs"
+          >
+            Check date for an event like this
+          </a>
+        </div>
       </div>
     </motion.div>
   );

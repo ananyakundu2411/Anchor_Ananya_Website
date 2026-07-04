@@ -4,11 +4,13 @@ export type Service = {
   copy: string;
   image: string;
   alt: string;
+  waKey?: string;
 };
 
 export const services: Service[] = [
   {
     slug: "wedding-anchoring",
+    waKey: "wedding",
     title: "Wedding Anchoring",
     copy: "From the baraat's first beat to the final vidaai, every ritual flows with warmth, elegance and perfectly timed energy.",
     image: "/media/weddings/wedding-arch-1.jpg",
@@ -16,6 +18,7 @@ export const services: Service[] = [
   },
   {
     slug: "corporate-events",
+    waKey: "corporate",
     title: "Corporate Events",
     copy: "Conferences, town halls and family days handled with polish — sharp protocol, seamless transitions, engaged audiences.",
     image: "/media/corporate/corporate-lawn-1.jpg",
@@ -23,6 +26,7 @@ export const services: Service[] = [
   },
   {
     slug: "award-nights",
+    waKey: "award",
     title: "Award Nights",
     copy: "Grand entrances, graceful citations and applause that lands exactly where it should — a ceremony your winners remember.",
     image: "/media/corporate/corporate-award.jpg",
@@ -30,6 +34,7 @@ export const services: Service[] = [
   },
   {
     slug: "brand-launches",
+    waKey: "brand",
     title: "Brand Launches",
     copy: "Products introduced with presence and precision — from tech reveals to showroom openings, the spotlight stays on your brand.",
     image: "/media/brand/brand-vivo-launch.jpg",
@@ -37,6 +42,7 @@ export const services: Service[] = [
   },
   {
     slug: "college-events",
+    waKey: "college",
     title: "College Events",
     copy: "Annual days, fests and farewells powered by youthful energy, quick wit and crowd control that keeps every act on schedule.",
     image: "/media/college/college-annualday-1.jpg",
@@ -44,6 +50,7 @@ export const services: Service[] = [
   },
   {
     slug: "cultural-shows",
+    waKey: "cultural",
     title: "Cultural Shows",
     copy: "Festivals and community celebrations hosted with cultural fluency — in the language, tone and spirit your audience loves.",
     image: "/media/cultural/cultural-saree.jpg",
@@ -51,6 +58,7 @@ export const services: Service[] = [
   },
   {
     slug: "sangeet-hosting",
+    waKey: "wedding",
     title: "Sangeet · Engagement · Reception",
     copy: "Choreographed reveals, family games and couple moments woven into one glittering, emotion-rich evening.",
     image: "/media/weddings/sangeet-lights.jpg",
@@ -58,6 +66,7 @@ export const services: Service[] = [
   },
   {
     slug: "private-celebrations",
+    waKey: "private",
     title: "Private Celebrations",
     copy: "Birthdays, baby showers and naming ceremonies turned into intimate productions — personal, playful and beautifully paced.",
     image: "/media/private/private-birthday-2.jpg",
@@ -65,6 +74,7 @@ export const services: Service[] = [
   },
   {
     slug: "live-shows",
+    waKey: "live",
     title: "Live Shows",
     copy: "Concerts, competitions and public stages carried with confidence — high energy, sharp cues and a crowd that stays with you.",
     image: "/media/hero/hero-stage.jpg",
