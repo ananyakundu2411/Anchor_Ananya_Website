@@ -58,17 +58,32 @@ export default function HeroSection() {
         {/* Portrait — first on mobile so Ananya leads the page, fully visible */}
         <motion.div {...fade(0.3)} className="relative order-2 mx-auto w-full max-w-xs sm:max-w-sm lg:order-2 lg:max-w-none">
           <div className="img-grade relative overflow-hidden rounded-3xl border border-gold/25 shadow-glow">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={heroMedia.portrait}
-              alt={heroMedia.portraitAlt}
-              fetchPriority="high"
-              className="aspect-[4/5] max-h-[52svh] w-full object-cover object-top lg:aspect-[3/4] lg:max-h-none"
-            />
+            {reduce ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={heroMedia.videoPoster}
+                alt={heroMedia.portraitAlt}
+                fetchPriority="high"
+                className="aspect-[4/5] max-h-[52svh] w-full object-cover object-top lg:aspect-[3/4] lg:max-h-none"
+              />
+            ) : (
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={heroMedia.videoPoster}
+                aria-label={heroMedia.portraitAlt}
+                className="aspect-[4/5] max-h-[52svh] w-full object-cover object-top lg:aspect-[3/4] lg:max-h-none"
+              >
+                <source src={heroMedia.video} type="video/mp4" />
+              </video>
+            )}
             {/* readability strip at the very bottom only — face stays clear */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink/80 to-transparent" />
             <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-              <p className="font-display text-lg italic text-ivory/95">Live on stage</p>
+              <p className="font-display text-lg italic text-ivory/95">Live on stage — real event footage</p>
               <span className="rounded-full border border-gold/40 bg-ink/60 px-3 py-1 text-[10px] uppercase tracking-widest2 text-gold backdrop-blur-md">
                 Anchor · Emcee
               </span>

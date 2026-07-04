@@ -6,6 +6,9 @@
 
 /** Hero media (portrait card). Swap paths to change the hero instantly. */
 export const heroMedia = {
+  /** Cinematic portrait loop (graded cuts from her pro stage footage). */
+  video: "/media/hero/hero-cinematic.mp4",
+  videoPoster: "/media/hero/hero-cinematic-poster.jpg",
   portrait: "/media/hero/hero-stage.jpg",
   portraitAlt:
     "Anchor Ananya Kundu on stage with microphone, arm raised, mid-performance",
