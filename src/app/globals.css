@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink text-ivory antialiased;
+  background-image: radial-gradient(
+    ellipse 90% 40% at 50% -5%,
+    rgba(212, 175, 106, 0.08),
+    transparent 60%
+  );
+}
+
+::selection {
+  background: rgba(212, 175, 106, 0.35);
+  color: #f6f1e7;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0b0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #26262f;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af6a;
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .glass {
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+  }
+
+  .gold-text {
+    @apply bg-gold-sheen bg-clip-text text-transparent;
+    background-size: 200% auto;
+  }
+
+  .gold-text-animated {
+    @apply gold-text animate-shimmer;
+  }
+
+  .eyebrow {
+    @apply font-sans text-[11px] font-medium uppercase tracking-widest2 text-gold;
+  }
+
+  .card-premium {
+    @apply relative overflow-hidden rounded-2xl border border-ink-line bg-ink-card shadow-card transition-all duration-500;
+  }
+  .card-premium:hover {
+    @apply -translate-y-1.5 border-gold/40 shadow-glow;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 font-sans text-sm font-medium tracking-wide transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold;
+  }
+  .btn-gold {
+    @apply btn bg-gold-sheen bg-[length:200%_auto] text-ink shadow-glow hover:brightness-110;
+  }
+  .btn-ghost {
+    @apply btn border border-gold/40 text-ivory hover:border-gold hover:bg-gold/10;
+  }
+  .btn-whatsapp {
+    @apply btn bg-[#1FA855] text-white shadow-[0_0_40px_-10px_rgba(31,168,85,0.6)] hover:bg-[#22b95d] hover:shadow-[0_0_50px_-8px_rgba(31,168,85,0.8)];
+  }
+
+  .divider-gold {
+    @apply mx-auto h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent;
+  }
+
+  .spotlight-top {
+    background: radial-gradient(
+      ellipse 70% 50% at 50% 0%,
+      rgba(212, 175, 106, 0.14),
+      transparent 70%
+    );
+  }
+
+  .input-premium {
+    @apply w-full rounded-xl border border-ink-line bg-ink-soft px-4 py-3 font-sans text-sm text-ivory placeholder:text-ivory-dim/50 transition-colors focus:border-gold focus:outline-none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .masonry {
+    column-gap: 1.25rem;
+    columns: 1;
+  }
+  @media (min-width: 640px) {
+    .masonry {
+      columns: 2;
+    }
+  }
+  @media (min-width: 1024px) {
+    .masonry {
+      columns: 3;
+    }
+  }
+  .masonry > * {
+    break-inside: avoid;
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Editorial marquee */
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
