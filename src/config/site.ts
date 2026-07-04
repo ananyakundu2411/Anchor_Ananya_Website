@@ -4,7 +4,7 @@ export const site = {
   tagline: "Turning Every Stage Into an Experience",
   description:
     "Professional anchor, emcee and event host for weddings, corporate events, brand launches, college festivals, cultural shows and private celebrations across India.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://anchorananya.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://anchor-ananya-website-8sbm.vercel.app",
   location: "Mumbai / Navi Mumbai, India",
 
   whatsapp: {
@@ -28,7 +28,7 @@ export const site = {
     { value: 250, suffix: "+", label: "Events Hosted" },
     { value: 5, suffix: ".0★", label: "Google Rating" },
     { value: 9, suffix: "+", label: "Event Categories" },
-    { value: 100, suffix: "%", label: "Stage Energy" },
+    { value: 3, suffix: "+", label: "Years on Stage" },
   ],
 
   nav: [
