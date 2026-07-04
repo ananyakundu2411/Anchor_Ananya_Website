@@ -46,3 +46,28 @@ export function upsert(table: string, rows: object | object[], onConflict: strin
 export function log(kind: string, ok: boolean, detail: object = {}) {
   return insert("sync_logs", { kind, ok, detail });
 }
+
+/** Read rows via PostgREST. query e.g. "social_posts?is_approved=eq.true&limit=4" */
+export async function select<T = Record<string, unknown>>(query: string): Promise<T[] | null> {
+  if (!dbConfigured) return null;
+  try {
+    const res = await fetch(`${URL_}/rest/v1/${query}`, {
+      headers: { apikey: KEY!, Authorization: `Bearer ${KEY}` },
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return null;
+    return (await res.json()) as T[];
+  } catch {
+    return null;
+  }
+}
+
+/** Simple key-value settings (table: app_settings). Used e.g. for rotated tokens. */
+export async function getSetting(key: string): Promise<string | null> {
+  const rows = await select<{ value: string }>(`app_settings?key=eq.${encodeURIComponent(key)}&select=value`);
+  return rows?.[0]?.value ?? null;
+}
+
+export function setSetting(key: string, value: string) {
+  return upsert("app_settings", { key, value, updated_at: new Date().toISOString() }, "key");
+}

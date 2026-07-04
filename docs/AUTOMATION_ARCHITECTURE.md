@@ -22,8 +22,10 @@ Env: SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY (server-only). Helper: src/lib/db.
 create table if not exists social_posts (
   id text primary key, media_type text, media_url text, embed_html text,
   thumbnail_url text, permalink text, caption text, "timestamp" timestamptz,
-  category text, is_featured boolean default false, is_approved boolean default true,
+  category text, is_featured boolean default false, is_approved boolean default false,
   source text default 'instagram_graph', created_at timestamptz default now(), updated_at timestamptz default now());
+create table if not exists app_settings (
+  key text primary key, value text, updated_at timestamptz default now());
 create table if not exists google_reviews (
   review_id text primary key, reviewer_display_name text, reviewer_profile_photo_url text,
   star_rating int, comment text, create_time timestamptz, update_time timestamptz,
@@ -50,7 +52,9 @@ Default-publish only star_rating >= 4 AND non-empty safe text; curation via src/
 1. Convert IG account to Business/Creator; link to a Facebook Page.
 2. Meta developer app → add Instagram Graph API product.
 3. Generate long-lived token (60d) for the IG user; store as INSTAGRAM_ACCESS_TOKEN + INSTAGRAM_IG_USER_ID.
-4. Cron keeps content fresh; token refresh: /api/cron/sync-instagram attempts refresh when <10 days to expiry (stores note in sync_logs; long-lived tokens refresh via GET /refresh_access_token where eligible).
+4. Cron keeps content fresh. TOKEN REFRESH (implemented): when the stored token is >45 days old the cron attempts (a) graph.instagram.com/refresh_access_token (Instagram Login flavour) then (b) graph.facebook.com oauth fb_exchange_token (needs META_APP_ID+META_APP_SECRET). A rotated token is persisted in app_settings and preferred over the env var on later runs; every attempt is logged to sync_logs.
+4b. APPROVAL GATE: synced posts land with is_approved=false and auto-mapped category (Wedding / College Event / Corporate / Brand Launch / Cultural / Private Event via caption keywords). Homepage shows only is_approved=true AND is_featured=true. Re-syncs update content fields only — manual curation is never overwritten. Approve/feature by flipping booleans in Supabase (or content.config.ts hiddenIds).
+4c. oEmbed (implemented): GET /api/instagram/oembed?url=<public post/reel URL> proxies the official instagram_oembed endpoint using the app access token (META_APP_ID|META_APP_SECRET) server-side, cached 24h. For embedding public posts only.
 5. Optional webhooks: subscribe app to `instagram` topic; set callback to /api/webhooks/instagram with INSTAGRAM_WEBHOOK_VERIFY_TOKEN; Meta app review may be required for production webhooks — cron fallback covers this.
 6. Public embeds alternative: Instagram oEmbed (requires app token) — endpoint documented in ENVIRONMENT_VARIABLES.md.
 

@@ -20,7 +20,8 @@ Set in Vercel → Project → Settings → Environment Variables. NEVER commit r
 - INSTAGRAM_ACCESS_TOKEN=<long-lived Graph API token>
 - INSTAGRAM_IG_USER_ID=<numeric IG business user id>
 - INSTAGRAM_WEBHOOK_VERIFY_TOKEN=<random string you choose>
-- META_APP_SECRET=<Meta app secret, for webhook signature verification>
+- META_APP_SECRET=<Meta app secret — webhook signatures + oEmbed + token exchange>
+- META_APP_ID=<Meta app id — oEmbed + token exchange>
 
 ## Google Business Profile (optional; API access approval-gated)
 - GOOGLE_OAUTH_CLIENT_ID / GOOGLE_OAUTH_CLIENT_SECRET / GOOGLE_OAUTH_REFRESH_TOKEN

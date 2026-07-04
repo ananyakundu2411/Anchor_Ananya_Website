@@ -22,7 +22,7 @@
 ## Backlog / nice-to-have
 - [ ] WebP/AVIF variants for gallery images (keep JPEG originals for OG)
 - [ ] Protected /admin route replacing content.config.ts curation
-- [ ] Homepage sections read from DB when configured (currently config-driven by design)
+- [x] Instagram homepage section reads approved+featured posts from DB (1h ISR), falls back to local reels
 - [ ] Lighthouse mobile run + budget doc (needs live URL access from CI)
-- [ ] Instagram oEmbed rendering for instagramPosts[] URLs
+- [x] Instagram oEmbed proxy route (/api/instagram/oembed) for public post embeds
 - [ ] Review schema JSON-LD once real synced reviews exist (compliance: only real, unedited reviews)
