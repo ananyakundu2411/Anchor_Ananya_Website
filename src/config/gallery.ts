@@ -29,7 +29,7 @@ export const categories: { key: GalleryCategory | "all"; label: string }[] = [
   { key: "private", label: "Private Events" },
 ];
 
-export const galleryItems: GalleryItem[] = [
+const allItems: GalleryItem[] = [
   // ——— Weddings / Sangeet / Haldi / Mehndi / Engagement ———
   { type: "image", src: "/media/weddings/wedding-arch-1.jpg", category: "weddings", location: "Mumbai", context: "Ceremony flow, family entries and ritual narration", caption: "Wedding Ceremony", alt: "Anchor Ananya Kundu hosting a wedding beside a pastel floral arch", orientation: "portrait" },
   { type: "image", src: "/media/weddings/sangeet-lights.jpg", category: "weddings", location: "Mumbai", context: "Family performances, couple games and choreographed reveals", caption: "Sangeet Night", alt: "Anchor Ananya Kundu under a canopy of fairy lights at a sangeet", orientation: "portrait" },
@@ -98,4 +98,25 @@ export const galleryItems: GalleryItem[] = [
   { type: "image", src: "/media/private/private-solo-mic.jpg", category: "private", caption: "Evening Host", alt: "Anchor Ananya Kundu with microphone at an evening event", orientation: "portrait" },
   { type: "image", src: "/media/private/newyear-2.jpg", category: "private", caption: "New Year Countdown", alt: "Anchor Ananya Kundu leading a new year countdown", orientation: "portrait" },
   { type: "image", src: "/media/private/private-party.jpg", category: "private", caption: "Party Nights", alt: "Anchor Ananya Kundu hosting a lively private party", orientation: "landscape" },
+];
+
+/**
+ * Curated first screen — a balanced editorial mix (one strong item per
+ * category) so "All" never opens wedding-only. Edit to re-curate.
+ */
+const firstSet = [
+  "/media/weddings/wedding-arch-1.jpg",
+  "/media/college/college-annualday-1.jpg",
+  "/media/corporate/corporate-lawn-1.jpg",
+  "/media/brand/brand-vivo-launch.jpg",
+  "/media/cultural/cultural-saree.jpg",
+  "/media/private/private-birthday-2.jpg",
+  "/media/videos/wedding-reel.mp4",
+  "/media/videos/college-reel.mp4",
+  "/media/weddings/sangeet-lights.jpg",
+];
+
+export const galleryItems: GalleryItem[] = [
+  ...firstSet.flatMap((s) => allItems.find((i) => i.src === s) ?? []),
+  ...allItems.filter((i) => !firstSet.includes(i.src)),
 ];

@@ -43,6 +43,15 @@ export function upsert(table: string, rows: object | object[], onConflict: strin
   });
 }
 
+/** PATCH rows via PostgREST. filter e.g. "id=eq.123" */
+export function update(table: string, filter: string, fields: object) {
+  return rest(`${table}?${filter}`, {
+    method: "PATCH",
+    body: JSON.stringify(fields),
+    headers: { Prefer: "return=minimal" },
+  });
+}
+
 export function log(kind: string, ok: boolean, detail: object = {}) {
   return insert("sync_logs", { kind, ok, detail });
 }

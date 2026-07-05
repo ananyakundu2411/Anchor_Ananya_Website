@@ -5,7 +5,7 @@ export const site = {
   headline:
     "Premium Anchor & Emcee for Weddings, College Fests, Brand Launches & Corporate Events",
   subheadline:
-    "Elegant flow, high-energy crowd engagement, and seamless stage presence for unforgettable events across India.",
+    "Ananya Kundu brings seamless flow, powerful crowd engagement, and polished stage presence to unforgettable events across India.",
   description:
     "Professional anchor, emcee and event host for weddings, corporate events, brand launches, college festivals, cultural shows and private celebrations across India.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://anchor-ananya-website-8sbm.vercel.app",
@@ -43,6 +43,7 @@ export const site = {
     { label: "About", href: "/about/" },
     { label: "Services", href: "/services/" },
     { label: "Gallery", href: "/gallery/" },
+    { label: "Reviews", href: "/#reviews" },
     { label: "Contact", href: "/contact/" },
   ],
 };
@@ -67,6 +68,8 @@ export const waMessages: Record<string, string> = {
   live: AVAILABILITY("a live show"),
   contact: site.whatsapp.message,
   gallery: AVAILABILITY("an event like this one"),
+  showreel:
+    "Hi Ananya, I just watched your showreel on your website and would like to check your availability.\nEvent type: \nDate: \nCity: ",
 };
 
 export function waLink(message?: string) {

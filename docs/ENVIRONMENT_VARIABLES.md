@@ -16,6 +16,9 @@ Set in Vercel → Project → Settings → Environment Variables. NEVER commit r
 ## Cron protection
 - CRON_SECRET=<random string> — Vercel automatically sends it for scheduled invocations
 
+## Admin panel (/admin — optional)
+- ADMIN_TOKEN=<random string> — enables the owner curation panel at /admin (approve/feature Instagram posts, approve/pin reviews). Requires the Supabase vars above. Without it the panel stays disabled and curation happens in src/config/content.config.ts.
+
 ## Instagram (optional)
 - INSTAGRAM_ACCESS_TOKEN=<long-lived Graph API token>
 - INSTAGRAM_IG_USER_ID=<numeric IG business user id>

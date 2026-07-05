@@ -1,11 +1,20 @@
 # QA_CHECKLIST.md — run before every release
 
+## Hero video (V6)
+- [ ] Montage autoplays muted + loops on mobile AND desktop (playsinline on iOS)
+- [ ] Poster shows instantly before video (no black flash); video fades in
+- [ ] Ananya's face/mic/gestures visible in every cut at 360px and 1440px widths
+- [ ] Headline + WhatsApp CTA + proof strip inside first mobile viewport
+- [ ] "Watch Showreel" opens modal (sound on, controls); Esc/backdrop/X close; hero resumes
+- [ ] prefers-reduced-motion: static poster, no video download
+- [ ] With JS disabled: poster + real trust numbers visible in HTML
+
 ## Mobile (primary)
-- [ ] Hero: Ananya fully visible, face/mic clear, no overlay on her, no crop-out at 360px width
 - [ ] Sticky bottom bar visible on all pages; "Check Date on WhatsApp" opens correct prefill
 - [ ] Tap targets ≥44px; no horizontal scroll anywhere
 - [ ] Gallery filters usable with thumb; lightbox swipe/arrows + close work; videos play with sound
 - [ ] College & Campus section visible on homepage without searching
+- [ ] Video Moments cards open lightbox and play with sound
 
 ## WhatsApp
 - [ ] Every CTA opens wa.me/919765827880 with correct per-category prefilled message (check wedding card, college card/section, corporate, brand, gallery lightbox, contact, sticky, hero)
@@ -25,6 +34,12 @@
 - [ ] GET /api/cron/sync-google-reviews → ok:true, rows in google_reviews
 - [ ] GET /api/webhooks/instagram?hub.mode=subscribe&hub.verify_token=<token>&hub.challenge=x → echoes x
 - [ ] All routes return ok:false (not 500) when creds missing
+
+## Admin (/admin — when ADMIN_TOKEN + Supabase set)
+- [ ] Wrong token → rejected; right token → posts/reviews lists load
+- [ ] Approve/feature/category toggles persist after reload (rows update in Supabase)
+- [ ] Without ADMIN_TOKEN: page explains setup, API returns 503 (no data leak)
+- [ ] /admin excluded in robots.txt and noindexed
 
 ## Performance / SEO / a11y
 - [ ] Stats show real numbers with JS disabled (view-source)

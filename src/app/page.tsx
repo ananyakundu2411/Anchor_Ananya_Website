@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/HeroSection";
-import EventMarquee from "@/components/EventMarquee";
+import MeetAnanya from "@/components/MeetAnanya";
+import WhereSeen from "@/components/WhereSeen";
+import VideoMoments from "@/components/VideoMoments";
+import CollegeSection from "@/components/CollegeSection";
+import CelebrationsSpotlight from "@/components/CelebrationsSpotlight";
+import ServicesShowcase from "@/components/ServicesShowcase";
 import BookingSteps from "@/components/BookingSteps";
-import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import Counter from "@/components/Counter";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import InstagramSection from "@/components/InstagramSection";
 import FinalCTA from "@/components/FinalCTA";
-import FeaturedEvents from "@/components/FeaturedEvents";
-import CelebrationsSpotlight from "@/components/CelebrationsSpotlight";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -21,11 +23,10 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      {/* 1 — Cinematic video hero */}
       <HeroSection />
 
-      <EventMarquee />
-
-      {/* Stats */}
+      {/* Stats — real numbers render server-side, animate on view */}
       <section className="relative border-y border-ink-line bg-ink-soft/60 py-14">
         <div className="container-site grid grid-cols-2 gap-8 lg:grid-cols-4">
           {site.stats.map((s, i) => (
@@ -43,16 +44,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      <FeaturedEvents />
+      {/* 2 — Personal intro */}
+      <MeetAnanya />
 
+      {/* 3 — Event-type credibility */}
+      <WhereSeen />
+
+      {/* 4 — Featured video moments (lightbox) */}
+      <VideoMoments />
+
+      {/* 5 — College & campus events */}
+      <CollegeSection />
+
+      {/* Weddings & celebrations counterpart */}
       <CelebrationsSpotlight />
 
+      {/* 6 — Services */}
+      <ServicesShowcase />
+
+      {/* 7 — Social proof */}
+      <div id="reviews" className="scroll-mt-20">
+        <TestimonialsSection full />
+      </div>
+
+      {/* 8 — Instagram (lazy, below the fold) */}
       <InstagramSection />
 
-      <TestimonialsSection full />
-
+      {/* 9 — Booking process */}
       <BookingSteps />
 
+      {/* 10 — Final CTA */}
       <FinalCTA />
     </>
   );

@@ -11,6 +11,7 @@ Rendering: SSG pages + serverless API routes on Vercel (v2 removed `output: 'exp
 - GET /api/cron/sync-instagram — Meta Graph API `/{ig-user-id}/media` fetch → upsert social_posts. Auth: `Authorization: Bearer ${CRON_SECRET}` (Vercel cron sends it automatically when CRON_SECRET is set).
 - GET /api/cron/sync-google-reviews — Google Business Profile API reviews fetch (OAuth refresh-token flow) → upsert google_reviews + rating summary.
 - GET/POST /api/webhooks/instagram — GET: hub.challenge verification (INSTAGRAM_WEBHOOK_VERIFY_TOKEN). POST: X-Hub-Signature-256 HMAC check (META_APP_SECRET), logs event, best-effort re-sync.
+- GET/POST /api/admin — owner curation API for /admin. Auth: `Authorization: Bearer ${ADMIN_TOKEN}` (503 when unset). GET ?kind=posts|reviews lists synced rows; POST {table,id,fields} PATCHes whitelisted flags only (social_posts: is_approved/is_featured/category; google_reviews: is_approved/is_featured).
 
 ## Cron (vercel.json)
 - sync-instagram daily 03:00 UTC; sync-google-reviews daily 03:30 UTC (Hobby plan = max 2 daily crons — exactly used).
@@ -46,7 +47,10 @@ create table if not exists sync_logs (
 ```
 
 ## Auto-publish rules (reviews)
-Default-publish only star_rating >= 4 AND non-empty safe text; curation via src/config/content.config.ts (pin/hide/feature IDs, pinned first, then update_time desc). Same config file curates Instagram posts, featured gallery, hero media, college-featured flags — this IS the "admin" (simplest safe form; a protected admin route is a future task in TASKS.md).
+Default-publish only star_rating >= 4 AND non-empty safe text; curation via src/config/content.config.ts (pin/hide/feature IDs, pinned first, then update_time desc). The same config file curates hero media, featured gallery and college images.
+
+## Admin panel (/admin — implemented)
+Token-protected owner UI (client page + /api/admin). Approve/hide + feature Instagram posts, set category, approve/pin Google reviews — writes straight to Supabase via db.ts update(). Requires ADMIN_TOKEN + SUPABASE_* env vars; without them the page shows setup guidance and the API returns 503/ok:false (no data exposure). Noindexed and disallowed in robots.txt. Static curation (hero video, homepage gallery, college images) stays in content.config.ts by design — file-based curation is versioned and safe.
 
 ## Instagram setup path (official; NO scraping)
 1. Convert IG account to Business/Creator; link to a Facebook Page.

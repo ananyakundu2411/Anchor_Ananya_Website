@@ -16,9 +16,14 @@ export const instagramPosts: string[] = [];
 /** Ananya's own promo/hosting reels, served locally. */
 export const localReels = [
   {
+    src: "/media/reels/showreel.mp4",
+    poster: "/media/reels/showreel-poster.jpg",
+    label: "Official Showreel",
+  },
+  {
     src: "/media/reels/promo-1.mp4",
     poster: "/media/reels/promo-1-poster.jpg",
-    label: "Showreel",
+    label: "Anchor Life",
   },
   {
     src: "/media/videos/wedding-reel.mp4",
@@ -29,10 +34,5 @@ export const localReels = [
     src: "/media/videos/brand-reel.mp4",
     poster: "/media/videos/brand-reel-poster.jpg",
     label: "Brand Launch",
-  },
-  {
-    src: "/media/videos/cultural-reel.mp4",
-    poster: "/media/videos/cultural-reel-poster.jpg",
-    label: "Cultural Show",
   },
 ];

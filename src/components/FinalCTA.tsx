@@ -17,7 +17,7 @@ export default function FinalCTA() {
       <Reveal className="container-site relative text-center">
         <p className="eyebrow">Your Event Deserves This Energy</p>
         <h2 className="mx-auto mt-4 max-w-3xl text-balance font-display text-4xl font-semibold leading-tight text-ivory sm:text-6xl">
-          Let&rsquo;s Make Your Next Event <span className="gold-text-animated">Unforgettable</span>
+          Ready to Make Your Event <span className="gold-text-animated">Unforgettable?</span>
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-balance text-ivory-dim">
           Dates fill fast during wedding and festive season. Share your event
@@ -25,7 +25,7 @@ export default function FinalCTA() {
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
-            Book Ananya on WhatsApp
+            Check Date on WhatsApp
           </a>
           <Link href="/contact/" className="btn-ghost">
             Send Enquiry
